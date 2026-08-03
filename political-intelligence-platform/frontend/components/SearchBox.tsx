@@ -1,36 +1,55 @@
+"use client";
+
+import { useState } from "react";
+
 export default function SearchBox() {
+  const [politicianName, setPoliticianName] = useState("");
+
+  const handleAnalyze = async () => {
+    if (politicianName.trim() === "") {
+      alert("Please enter a politician name.");
+      return;
+    }
+
+    alert(`Searching for: ${politicianName}`);
+
+    // Session 6
+    // Yahin se backend API call jayegi
+  };
+
   return (
     <div
       style={{
-        marginTop: "60px",
         display: "flex",
         justifyContent: "center",
         gap: "12px",
+        marginTop: "50px",
       }}
     >
       <input
         type="text"
-        placeholder="Search any Indian Politician..."
+        value={politicianName}
+        onChange={(e) => setPoliticianName(e.target.value)}
+        placeholder="Enter politician name..."
         style={{
-          width: "500px",
+          width: "450px",
           padding: "16px",
-          borderRadius: "10px",
-          border: "1px solid #475569",
           fontSize: "16px",
-          outline: "none",
+          borderRadius: "10px",
+          border: "1px solid #94a3b8",
         }}
       />
 
       <button
+        onClick={handleAnalyze}
         style={{
-          padding: "16px 28px",
-          backgroundColor: "#2563eb",
+          background: "#2563eb",
           color: "white",
           border: "none",
+          padding: "16px 26px",
           borderRadius: "10px",
           cursor: "pointer",
           fontWeight: "bold",
-          fontSize: "16px",
         }}
       >
         Analyze
